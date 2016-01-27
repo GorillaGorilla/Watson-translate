@@ -2,6 +2,7 @@
 declared-services:
   Language Translation:
     label: Language-Translation-New
+    plan: standard
 applications:
 - services:
   - Language Translation
