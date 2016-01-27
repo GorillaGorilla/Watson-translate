@@ -7,7 +7,7 @@
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
 var express = require('express');
-//var bodyParser = require("body-parser");
+var bodyParser = require("body-parser");
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -33,13 +33,14 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 });
 
 app.get('/:input', function(req, res){
-  var input = request.params.input;
+  var input = req.params.input;
   console.log("get request arrived!");
   console.log(input);
   res.end();
 });
 
 app.get('/help',function(req, res){
+  console.log(req.body.dummy);
   res.send("nothing");
   res.end();
 });
