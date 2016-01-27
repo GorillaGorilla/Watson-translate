@@ -1,11 +1,11 @@
 ---
 declared-services:
   Language Translation:
-    label: Language-Translation-New
+    label: language_translation
     plan: standard
 applications:
 - services:
-  - Language Translation
+  - Language-Translation-New
 applications:
 - path: .
   memory: 256M
