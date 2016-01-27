@@ -43,9 +43,17 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 //  res.end();
 //});
 
+app.post('/translate', function (req, res){
+	console.log("req.body.dummy: " + req.body.dummy);
+	res.send("nothing");
+	res.end();
+});
+
+
 app.get('/help',function(req, res){
-  console.log("request test:" + req.body.dummy);
-  res.send(req.body.dummy);
+  console.log("request test: " + req);
+  console.log("request test: " + req.name);
+  res.send("nothing");
   res.end();
 });
 

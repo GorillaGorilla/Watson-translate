@@ -7,9 +7,23 @@ function run() {
     var input = document.getElementById('english-input').value;
     var newUrl = 'http://watson-translate.mybluemix.net/' + input;
     //window.location.href = newUrl;
-    var d = {dummy : input};
-    $.get("/help", d, function(data){
-        $(".list").append('<div class="item">' + "Get request performed" + '</div>');
+    var d = {dummy : "data"};
+    console.log(d);
+    $(".list").html("");
+    $.get("/help", {dummy : "data", name : "john"}, function(data){
+        $(".list").append('<div class="item">' + 'Get request performed' + '</div>');
     });
+    
+    
+    
 }
 
+function sendAPost(){
+	var input = document.getElementById('english-input').value;
+	var d = {dummy : "data"};
+    console.log(d);
+    $(".list").html("");
+    $.post("/translate",d, function(data){
+			$(".list").append('<div class="item">' + "Post Request Sent   " + data + '</div>');
+	});
+}
