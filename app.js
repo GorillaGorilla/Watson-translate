@@ -21,6 +21,10 @@ var host = (process.env.VCAP_APP_HOST || 'test-host');
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
