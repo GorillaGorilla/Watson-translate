@@ -7,7 +7,7 @@ function run() {
     var input = document.getElementById('english-input').value;
     var newUrl = 'http://watson-translate.mybluemix.net/' + input;
     //window.location.href = newUrl;
-    var d = {dummy : "data"};
+    var d = {dummy : input};
     $.get("/help",d, function(data){
         $(".list").append('<div class="item">' + "Get request performed" + '</div>');
     });
