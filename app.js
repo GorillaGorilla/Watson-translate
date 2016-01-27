@@ -32,18 +32,19 @@ app.listen(appEnv.port, '0.0.0.0', function() {
   console.log("server starting on " + appEnv.url);
 });
 
-app.get('/:input', function(req, res){
-  var input = req.params.input;
-  console.log("get request arrived!");
-  console.log(input);
+//app.get('/:input', function(req, res){
+//  var input = req.params.input;
+//  console.log("get request arrived!");
+//  console.log(input);
+//  res.end();
+//});
+
+app.get('/help',function(req, res){
+  console.log("request test:" + req.body.dummy);
+  res.send(req.body.dummy);
   res.end();
 });
 
-app.get('/help',function(req, res){
-  console.log(req.body.dummy);
-  res.send("nothing");
-  res.end();
-});
 app.get('*',function(req, res){
   res.redirect('/public');
 });

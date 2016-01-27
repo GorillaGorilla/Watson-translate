@@ -8,7 +8,7 @@ function run() {
     var newUrl = 'http://watson-translate.mybluemix.net/' + input;
     //window.location.href = newUrl;
     var d = {dummy : input};
-    $.get("/help",d, function(data){
+    $.get("/help", d, function(data){
         $(".list").append('<div class="item">' + "Get request performed" + '</div>');
     });
 }

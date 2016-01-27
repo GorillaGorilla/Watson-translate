@@ -1,3 +1,10 @@
+---
+declared-services:
+  Language Translation:
+    label: Language-Translation-New
+applications:
+- services:
+  - Language Translation
 applications:
 - path: .
   memory: 256M
