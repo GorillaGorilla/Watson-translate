@@ -33,22 +33,23 @@ var appEnv = cfenv.getAppEnv();
 
 if (process.env.VCAP_SERVICES) {
 	var env = JSON.parse(process.env.VCAP_SERVICES);
-	console.log("env: ")
+//	var translateConfig = env.language_translation[0];
+	console.log("env: " + env);
 	var output = '';
 	for (var property in env) {
   		output += property + ': ' + env[property]+'; ';
   		}
   		console.log('output: ' + output);
-	var credentials = env['language_translation'][0]['credentials'];
-	var urlTranslate = credentials['url'];
-	var usernameTranslate = credentials['username'];
-	var passwordTranslate = credentials['password']; 
+//	var credentials = env['language_translation'][0]['credentials'];
+//	var urlTranslate = credentials['url'];
+//	var usernameTranslate = credentials['username'];
+//	var passwordTranslate = credentials['password']; 
 	
 	}
 
 var language_translation = watson.language_translation({
-		username: usernameTranslate,
-		password: passwordTranslate,
+		username: "15def373-6f17-4488-9faa-8352ebd4d59f",
+		password: "Gzi66ZHDzAnP",
 		version: 'v2'
 });
 
@@ -69,8 +70,23 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 
 app.post('/translate', function (req, res){
 	console.log("req.body.dummy: " + req.body.dummy);
-	res.send(output);
-	res.end();
+	var englishWords = req.body.dummy;
+		//send a translation request to Watson, error check response and do something with it
+	language_translation.translate({
+		text: englishWords, source: 'en', target: 'es' },
+		function(err, translation) {
+			if(err) {
+				console.log(err);
+				res.send(err);
+				res.end();
+			} else {
+				console.log(JSON.stringify(translation.translations, null, 2));
+				console.log(translation.translations[0].translation);
+				//send response back to the client
+				res.send(JSON.stringify(translation.translations[0].translation));
+				res.end();
+			}
+	});
 });
 
 

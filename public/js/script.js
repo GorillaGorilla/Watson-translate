@@ -20,10 +20,10 @@ function run() {
 
 function sendAPost(){
 	var input = document.getElementById('english-input').value;
-	var d = {dummy : "data"};
+	var d = {dummy : input};
     console.log(d);
     $(".list").html("");
     $.post("/translate",d, function(data){
-			$(".list").append('<div class="item">' + "Post Request Sent   " + data + '</div>');
+			$(".list").append('<div class="item">' + input + "   Translates to   " + data + '</div>');
 	});
 }
