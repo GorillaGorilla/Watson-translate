@@ -9,7 +9,7 @@
     "Name": "Watson-translate",
     "Instrumentation": {
       "services": [
-        "Language Translation"
+        "Language-Translation-New"
       ]
     }
   },
